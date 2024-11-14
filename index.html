@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Application de gestion de recettes hors-ligne">
+    
+    <title>Recettes</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/G.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/G.png">
+<meta name="theme-color" content="#4CAF50">
+
+</head>
+<style>
+    /* Style global */
+main {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Parallax pour les sections de catégories */
+.recipe-list {
+    background-image: url('https://picsum.photos/seed/${Math.random()}/1200/400'); /* Image dynamique pour chaque catégorie */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+    margin: 20px 0;
+    width: 90vw;
+    border: solid 1px #3498db; /* Bordure colorée */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    animation: slideInUp 1.5s ease-in-out forwards;
+    opacity: 0;
+    color: white;
+}
+
+/* Animation de titre de catégorie */
+h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease forwards;
+    opacity: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Style pour les items de recette */
+.recipe-item {
+    display: inline-block;
+    width: 250px;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: solid 1px #3498db;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(50px);
+    opacity: 0;
+    animation: fadeInUp 1.2s ease forwards;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.recipe-item:hover {
+    transform: translateY(0);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Image de recette */
+.recipe-item img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    animation: zoomIn 1.3s ease forwards;
+    opacity: 0;
+}
+
+/* Nom de recette */
+.recipe-item h4 {
+    font-size: 1.3em;
+    color: #333;
+    opacity: 0;
+    animation: fadeIn 1.8s ease forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInUp {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes zoomIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+/* Style pour le bouton d'installation */
+/* Bouton Installer l'Application */
+#installButton {
+    display: none; /* masqué par défaut */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    background-color: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    animation: slideInDown 1s ease forwards;
+}
+
+#installButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+#installButton:active {
+    transform: translateY(1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Titre principal */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    animation: fadeInDown 1.2s ease forwards;
+    opacity: 0;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Label du filtre */
+label {
+    font-size: 1.1em;
+    color: #555;
+    display: block;
+    margin: 20px 0 5px;
+    text-align: center;
+    font-weight: bold;
+    animation: fadeIn 1.5s ease forwards;
+    opacity: 0;
+}
+
+/* Sélecteur de catégorie */
+#categoryFilter {
+    font-size: 1em;
+    padding: 8px 12px;
+    border: solid 1px #3498db;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: fadeInUp 1.5s ease forwards;
+    opacity: 0;
+}
+
+#categoryFilter:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+#categoryFilter:focus {
+    outline: none;
+    border-color: #2980b9;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
+<body>
+
+    <header id="header"></header>
+<main>
+    <button id="installButton" style="display: none;">Installer l'Application</button>
+<h1>Liste des Recettes</h1>
+
+<label>Filtrer par catégorie :</label>
+<select id="categoryFilter" onchange="filterByCategory()">
+    <option value="all">Toutes les catégories</option>
+    <option value="Entrée">Entrée</option>
+    <option value="Plat">Plat</option>
+    <option value="Dessert">Dessert</option>
+    <option value="Tarte">Tarte</option>
+    <option value="Cake">Cake</option>
+</select>
+
+<div id="recipeList"></div>
+</main>
+<footer id="footer" ></footer>
+<script src="/header.js"></script>
+<script src="/footer.js"></script>
+<script src="/index.js"></script>
+<script>
+    loadHeader(); // Charger le header dynamiquement
+
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/service-worker.js")
+            .then(registration => {
+                console.log("Service Worker enregistré avec succès :", registration.scope);
+            })
+            .catch(error => {
+                console.log("Échec de l'enregistrement du Service Worker :", error);
+            });
+    });
+}
+</script>
+
+</body>
+</html>

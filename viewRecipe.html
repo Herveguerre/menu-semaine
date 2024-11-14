@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails de la Recette</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<style>
+    /* Style de base */
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* En-tête avec effet Parallax */
+header {
+    background-image: url('https://picsum.photos/1200/600');
+    height: 300px;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    text-align: center;
+}
+
+/* Style général de la page */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #fff5f3 0%, #ffdddd 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    margin: 0;
+    perspective: 1000px;
+    perspective-origin: center;
+}
+
+/* Section principale de la recette */
+#recipeDetails {
+    background-color: #ffffff;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px;
+    max-width: 600px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    margin: 20px 0 20px 0;
+}
+
+/* Parallaxe au survol */
+#recipeDetails:hover {
+    transform: translateY(-10px) rotateX(5deg) rotateY(-5deg);
+}
+
+/* Animation d'apparition */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Titre de la recette */
+#recipeDetails h2 {
+    font-size: 2em;
+    color: #ff6b6b;
+    margin-bottom: 15px;
+    text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+    transform: translateZ(20px);
+    transition: color 0.4s ease;
+}
+
+#recipeDetails h2:hover {
+    color: #ff3b3b;
+}
+
+/* Image de la recette avec effet de zoom et rotation */
+#recipeDetails img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    transition: transform 0.6s ease, box-shadow 0.4s;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#recipeDetails img:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Sous-titres avec transition */
+#recipeDetails h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: left;
+    position: relative;
+}
+
+#recipeDetails h3:after {
+    content: "";
+    width: 50px;
+    height: 3px;
+    background: #ff6b6b;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+#recipeDetails h3:hover:after {
+    transform: scaleX(1);
+}
+
+/* Liste des ingrédients */
+#recipeDetails ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    color: #666;
+    margin: 0 10px;
+    line-height: 1.8;
+    font-size: 1.05em;
+}
+
+#recipeDetails ul li {
+    padding: 5px 0;
+    border-bottom: 1px dashed #ddd;
+    transition: color 0.4s, padding-left 0.3s;
+}
+
+#recipeDetails ul li:hover {
+    color: #ff6b6b;
+    padding-left: 10px;
+}
+
+/* Étapes */
+#recipeDetails p {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.8;
+    text-align: left;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05);
+    transform: translateZ(10px);
+    transition: background-color 0.4s;
+}
+
+#recipeDetails p:hover {
+    background-color: #ffefef;
+}
+
+/* Boutons de navigation avec effet 3D */
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    gap: 10px;
+}
+
+.navigation-buttons button {
+    background-color: #ff6b6b;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1em;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background-color 0.4s, transform 0.3s, box-shadow 0.4s;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1;
+    
+}
+
+.navigation-buttons button:hover {
+    background-color: #ff3b3b;
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navigation-buttons button:active {
+    transform: translateY(2px);
+}
+
+/* Responsivité */
+@media (max-width: 600px) {
+    #recipeDetails {
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    #recipeDetails h2 {
+        font-size: 1.6em;
+    }
+
+    .navigation-buttons button {
+        font-size: 0.9em;
+        padding: 10px 18px;
+    }
+}
+
+</style>
+<body><header id="header"></header>
+    <main>
+
+<div id="recipeDetails"></div>
+</main>
+<footer id="footer" ></footer>
+<script src="/header.js"></script>
+<script src="/footer.js"></script>
+<script>
+    loadHeader(); // Charger le header dynamiquement
+</script>
+<script src="/viewRecipe.js"></script>
+</body>
+</html>

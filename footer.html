@@ -1,0 +1,124 @@
+<style>
+    /* Style du footer */
+footer {
+    background: linear-gradient(135deg, #333, #444);
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    border-top: 2px solid #ff6b6b;
+    box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.3);
+    animation: fadeInFooter 1s ease-in-out;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* Contenu principal du footer */
+.footer-content {
+    font-size: 1em;
+    line-height: 1.5;
+    transform: translateZ(30px);
+}
+
+/* Animation d’apparition du footer */
+@keyframes fadeInFooter {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Liens sociaux avec parallaxe */
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    transform: translateZ(30px);
+    transition: transform 0.5s;
+}
+
+.social-icons a {
+    text-decoration: none;
+    color: #ff6b6b;
+    border: 2px solid #ff6b6b;
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 0.9em;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, transform 0.4s;
+}
+
+/* Couleur et effet de survol des icônes */
+.social-icons a:hover {
+    background-color: #ff6b6b;
+    color: #fff;
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Styles individuels pour les icônes */
+.social-icons .twitter {
+    background-color: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.social-icons .linkedin {
+    background-color: #0077b5;
+    border-color: #0077b5;
+}
+
+.social-icons .github {
+    background-color: #333;
+    border-color: #333;
+}
+
+/* Parallaxe du footer au survol */
+footer:hover .social-icons,
+footer:hover .footer-content {
+    transform: translateY(-10px);
+}
+
+/* Texte copyright avec animation */
+.footer-content p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #bbb;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-content p:hover {
+    color: #ff6b6b;
+    text-shadow: 0px 1px 2px rgba(255, 107, 107, 0.7);
+}
+
+/* Ajustements pour petits écrans */
+@media (max-width: 600px) {
+    .footer-content {
+        font-size: 0.8em;
+    }
+    
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8em;
+        padding: 8px;
+    }
+}
+
+</style>
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2023 Recettes PWA - Tous droits réservés</p>
+        <p>Conçu par Hervé Guerre</p>
+    </div>
+    <div class="social-icons">
+        <a href="#" title="Twitter" class="social-icon twitter">Twitter</a>
+        <a href="#" title="LinkedIn" class="social-icon linkedin">LinkedIn</a>
+        <a href="#" title="GitHub" class="social-icon github">GitHub</a>
+    </div>
+</footer>

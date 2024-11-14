@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Recettes</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<style>
+    /* Styles de base *//* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles pour le conteneur principal */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Titre principal */
+h1, h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Bouton pour ajouter un ingrédient */
+button[type="button"] {
+    background-color: #3498db;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+button[type="button"]:hover {
+    background-color: #2980b9;
+}
+
+/* Conteneur pour les ingrédients */
+#ingredientsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ingredient {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Liste des recettes */
+#recipeList {
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.recipe-item {
+    
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin: 8px 0;
+    background-color: #ecf0f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.recipe-item h4 {
+    margin: 0;
+    color: #34495e;
+}
+
+/* Boutons de modification et suppression */
+.recipe-item button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.recipe-item button:hover {
+    background-color: #c0392b;
+}
+
+</style>
+<body>
+    <header id="header"></header>
+    <main>
+
+<h1>Ajouter / Modifier une Recette</h1>
+
+<form id="recipeForm">
+    <label>Nom de la recette :</label>
+    <input type="text" id="recipeName" required><br>
+    
+    <label>URL de l'image :</label>
+    <input type="text" id="recipeImage"><br>
+    
+    <label>Catégorie :</label>
+    <select id="recipeCategory" required>
+        <option value="Entrée">Entrée</option>
+        <option value="Plat">Plat</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Tarte">Tarte</option>
+        <option value="Cake">Cake</option>
+    </select><br>
+
+    <label>Ingrédients :</label>
+    <div id="ingredientsContainer">
+        <input type="text" class="ingredient" placeholder="Ingrédient" required>
+    </div>
+    <button type="button" onclick="addIngredient()">Ajouter un ingrédient</button><br>
+
+    <label>Étapes :</label>
+    <textarea id="recipeSteps" required></textarea><br>
+
+    <button type="button" onclick="saveRecipe()">Enregistrer la recette</button>
+</form>
+
+<h2>Liste des Recettes</h2>
+<div id="recipeList"></div>
+</main>
+<footer id="footer"></footer>
+<script src="/header.js"></script>
+<script src="/footer.js"></script>
+<script>
+    loadHeader(); // Charger le header dynamiquement
+</script>
+<script src="/crud.js"></script>
+</body>
+</html>
