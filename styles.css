@@ -21,18 +21,7 @@ main {
 /*header*/
 
 
-header {
-    background: linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.5)
-        ),
-        url("https://picsum.photos/id/10/1920/200") no-repeat center center/cover;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-}
+
 
 nav ul {
     display: flex;
@@ -139,7 +128,7 @@ h3 {
 /* Arrière-plan pour l’effet parallax de la page */
 body::before {
     content: "";
-    background-image: url("https://picsum.photos/1920/1080");
+    background-image: url("/food-6697404_1280.jpg");
     position: fixed;
     top: 0;
     left: 0;

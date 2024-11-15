@@ -54,6 +54,7 @@ function displayRecipesByCategory(recipes) {
                     </div>
                 `).join('')}
             </div>
+            
         `;
     }).join('');
 }
