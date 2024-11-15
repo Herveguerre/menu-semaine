@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <script  src="/data.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Application de gestion de recettes hors-ligne">
@@ -13,6 +14,7 @@
 <meta name="theme-color" content="#4CAF50">
 
 </head>
+
 <style>
     /* Style global */
 main {
@@ -239,7 +241,7 @@ label {
 <footer id="footer" ></footer>
 <script src="/header.js"></script>
 <script src="/footer.js"></script>
-<script src="/index.js"></script>
+<script defer src="/index.js"></script>
 <script>
     loadHeader(); // Charger le header dynamiquement
 
@@ -255,6 +257,7 @@ if ("serviceWorker" in navigator) {
     });
 }
 </script>
+
 
 </body>
 </html>

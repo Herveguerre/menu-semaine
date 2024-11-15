@@ -1,3 +1,28 @@
+function initializeLocalStorage() {
+    // Vérifie si des recettes existent déjà dans localStorage
+    if (!localStorage.getItem("recipes")) {
+        // Si non, enregistre les recettes par défaut dans localStorage
+        localStorage.setItem("recipes", JSON.stringify(defaultRecipes));
+        console.log("Recettes par défaut ajoutées à localStorage.");
+    } else {
+        console.log("Recettes déjà présentes dans localStorage.");
+    }
+}
+
+// Appeler cette fonction au chargement de la page
+initializeLocalStorage();
+
+// Charger et afficher les recettes sur la page
+function loadRecipes() {
+    const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
+    displayRecipesByCategory(recipes);
+}
+
+document.addEventListener("DOMContentLoaded", loadRecipes);
+
+
+
+
 //index.js
 function loadRecipes() {
     const recipes = JSON.parse(localStorage.getItem("recipes")) || [];
@@ -45,3 +70,11 @@ function viewRecipe(id) {
 
 // Charger les recettes au chargement de la page
 loadRecipes();
+
+
+
+
+// index.js
+
+
+
