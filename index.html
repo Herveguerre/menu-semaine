@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,6 +47,7 @@ main {
     animation: slideInUp 1.5s ease-in-out forwards;
     opacity: 0;
     color: white;
+   
 }
 
 /* Animation de titre de catégorie */
@@ -73,6 +75,7 @@ h3 {
     opacity: 0;
     animation: fadeInUp 1.2s ease forwards;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .recipe-item:hover {
@@ -237,6 +240,7 @@ label {
 </select>
 
 <div id="recipeList"></div>
+
 </main>
 <footer id="footer" ></footer>
 <script src="/header.js"></script>
@@ -256,6 +260,7 @@ if ("serviceWorker" in navigator) {
             });
     });
 }
+
 
 
 

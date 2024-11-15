@@ -166,6 +166,18 @@ button[type="button"]:hover {
 
 <h2>Liste des Recettes</h2>
 <div id="recipeList"></div>
+<!----><button title="Effacer toutes les données" id="resetLocalStorage">Réinitialiser les données</button>
+
+<script>
+    document.getElementById("resetLocalStorage").addEventListener("click", () => {
+        if (confirm("Êtes-vous sûr de vouloir réinitialiser toutes les données ?")) {
+            localStorage.clear(); // Efface toutes les données
+            console.log("LocalStorage réinitialisé.");
+            alert("Les données ont été réinitialisées.");
+            location.reload(); // Recharge la page pour refléter les changements
+        }
+    });
+</script>
 </main>
 <footer id="footer"></footer>
 <script src="/header.js"></script>

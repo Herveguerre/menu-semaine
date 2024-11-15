@@ -43,7 +43,7 @@ function loadRecipeDetails() {
         // Mettre à jour la recette actuelle dans localStorage pour persistance
         localStorage.setItem("currentRecipe", JSON.stringify(recipe));
     } else {
-        document.getElementById("recipeDetails").innerHTML = "<p>Recette introuvable.</p>";
+        document.getElementById("recipeDetails").innerHTML = "<p>Aucune recettes disponible.</p>";
     }
 }
 
